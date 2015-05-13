@@ -2,6 +2,4 @@
 General repository for PowerShell
 
 
-#Header Example
-##smaller header example
-###Even smaller header
+This is a general repository for power shell commands.
