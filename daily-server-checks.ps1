@@ -1,7 +1,5 @@
 $OutputFile="C:\Scripts\ServerStatus.htm"
 
- 
-
 ## Replace these values with valid from and to email addresses
 
 $smtpFrom = "monitor@domain.com"
