@@ -1,0 +1,14 @@
+$group = Get-ADGroupMember "bulkadusertool"
+echo $group.name will be deleted..
+$decision = Read-Host "continue? [y/n]"
+    if ($decision -eq "Y") {
+        $array += $group.name 
+            foreach ($name in $array) {
+                Remove-ADUser -Identity $name -Confirm
+                echo "$name has been deleted!"
+            }
+     
+    } else {
+    echo "exiting"
+        exit
+        }
