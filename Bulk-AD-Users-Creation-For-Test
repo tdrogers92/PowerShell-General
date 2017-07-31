@@ -1,0 +1,23 @@
+$userarray = @()
+$pattern = "^[0-9]+$"
+$number = Read-Host "Enter number of test users to add"
+
+if ($number -match $pattern -eq $false) { 
+       echo "not a valid input. Must be numbers only" 
+    }
+1..$number | % {
+    $userarray += "user$_"
+   }
+$group = "bulkadusertool"
+#$checkgroup = Get-ADGroup -Identity $group
+#    if ($checkgroup -ne $null) {
+#       echo "Group exists continuing...."
+#        } else {
+#            New-ADGroup -Name $group -GroupScope global
+#          }
+foreach ($user in $userarray) {
+    $newpassword = ConvertTo-SecureString -String "$password" -AsPlainText -Force
+    New-ADUser -UserPrincipalName $user@onelanex.com -Name $user -AccountPassword $newpassword -Enabled 1
+    Add-ADGroupMember -Identity $group -Members $user
+    echo "User Account Created: $user"
+  }
