@@ -1,0 +1,7 @@
+cd path-to-search
+$compareDate = "08 February 2018 16:20:00"
+$files = Get-ChildItem -Recurse -Attributes !Directory+!System | Where-Object { $_.LastWriteTime -ge $compareDate }
+    foreach($file in $files){
+        echo $file >> C:\Users\tdrogers92-admin\Desktop\lastWriteTimeFilesLog.txt
+        cp $file.PSPath \\LocalPC\c$\Users\tdrogers92\Desktop\symbiote-changedFiles\
+     }
